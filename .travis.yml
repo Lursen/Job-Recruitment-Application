@@ -1,6 +1,5 @@
 language: csharp
 os: windows
-dotnet: 3.1.4
 solution: JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln
 mono: none
 script:
