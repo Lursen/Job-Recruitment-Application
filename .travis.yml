@@ -4,3 +4,4 @@ solution: JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln
 mono: none
 script:
   - dotnet restore JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln
+  - dotnet build JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln -c Release
