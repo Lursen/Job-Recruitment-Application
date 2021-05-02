@@ -1,4 +1,4 @@
 language: csharp
-mono: none
-dotnet: 3.1
 solution: ./JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln
+install:
+  - nuget restore ./JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln
