@@ -1,5 +1,4 @@
 language: csharp
-dotnet: 3.0 
 os: windows
 mono: none
 
