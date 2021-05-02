@@ -1,10 +1,10 @@
 language: csharp
-os: windows
-mono: none
+
+dotnet: 2.1.4
+sudo: false
 
 before_script: 
 - dotnet restore ".\JobRecrtuitmentCompany\JobRecrtuitmentCompany.sln" 
 
 script: 
 - dotnet build ".\JobRecrtuitmentCompany\JobRecrtuitmentCompany.sln" -c Release 
-
