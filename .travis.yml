@@ -1,5 +1,3 @@
 language: csharp
-os: windows
 mono: none
-script:
-  - dotnet build JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln -c Release
+solution: JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln
