@@ -1,6 +1,8 @@
 language: csharp
+dotnet: 2.1.4
 os: windows
 mono: none
+sudo: false
 script:
   - dotnet restore JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln
   - dotnet build JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln -c Release
