@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="JobRecrtuitmentCompany.User">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAgAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JobRecrtuitmentCompany.Vacancy">
+    <Position X="12.25" Y="1.25" Width="1.75" />
+    <AssociationLine Name="EmployeesResponses" Type="JobRecrtuitmentCompany.Employee">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.465" Y="0.09" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEACAAAAAAAAAAAAAAAAwAAAIAAAAAAQAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Employer" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="EmployeesResponses" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="JobRecrtuitmentCompany.Employee">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Vacancies" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="JobRecrtuitmentCompany.Employer">
+    <Position X="8.5" Y="0.5" Width="1.75" />
+    <AssociationLine Name="VacanciesResponses" Type="JobRecrtuitmentCompany.Vacancy">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.332" Y="0.04" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="VacanciesResponses" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -23,14 +23,12 @@ namespace JobRecrtuitmentCompany
             label2.Text = "ФИО:";
             label3.Text = "Портфолио:";
 
-            using (SampleDbContext context = new SampleDbContext())
-            {
-                Employee employee = (Employee)context.Users.Where(x => x.Email == VacancyFinder.currentEmployee).FirstOrDefault();
+            Employee employee = (Employee)UserManipulation.GetUser(VacancyFinder.currentEmployee);
 
-                textBox1.Text = employee.Email;
-                textBox2.Text = employee.Name;
-                textBox3.Text = employee.Portfolio;
-            }
+            textBox1.Text = employee.Email;
+            textBox2.Text = employee.Name;
+            textBox3.Text = employee.Portfolio;
+            
         }
     }
 }

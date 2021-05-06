@@ -20,41 +20,31 @@ namespace JobRecrtuitmentCompany
             label2.Text = "Заработная плата:";
             label3.Text = "Тип работ:";
             label4.Text = "Требования:";
+            
+            var vacancy = VacancyFinder.GetVacancy(VacancyFinder.currentVacancy);
 
-            using (SampleDbContext context = new SampleDbContext())
-            {
-                var vacancy = context.Vacancies.Find(VacancyFinder.currentVacancy);
-
-                textBox1.Text = vacancy.Name;
-                textBox2.Text = vacancy.Salary.ToString();
-                textBox3.Text = vacancy.Type;
-                textBox4.Text = vacancy.Requirements;
-            }
+            textBox1.Text = vacancy.Name;
+            textBox2.Text = vacancy.Salary.ToString();
+            textBox3.Text = vacancy.Type;
+            textBox4.Text = vacancy.Requirements;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SampleDbContext context = new SampleDbContext())
+
+            var currentVacancy = VacancyFinder.GetVacancy(VacancyFinder.currentVacancy);
+            var responses = currentVacancy.EmployeesResponses.ToList();
+            Employee curUser = (Employee)UserManipulation.GetUser(UserManipulation.CurrentUser);
+
+            bool responseExists = responses.Contains(curUser);
+
+            if (responseExists)
             {
-                var currentVacancy = context.Vacancies
-                  .Include(x => x.EmployeesResponses)
-                  .Where(x => x.VacancyId == VacancyFinder.currentVacancy)
-                  .FirstOrDefault();
-
-                var responses = currentVacancy.EmployeesResponses.ToList();
-
-                Employee curUser = (Employee)context.Users.Where(x => x.Email == UserManipulation.CurrentUser).FirstOrDefault();
-                bool responseExists = responses.Contains(curUser);
-
-                if (responseExists)
-                {
-                    MessageBox.Show("Отклик уже оставлен!");
-                }
-                else
-                {
-                    currentVacancy.EmployeesResponses.Add(curUser);
-                    context.SaveChanges();
-                }
+                MessageBox.Show("Отклик уже оставлен!");
+            }
+            else
+            {
+                VacancyFinder.AddResponse(currentVacancy,curUser);
             }
         }
     }

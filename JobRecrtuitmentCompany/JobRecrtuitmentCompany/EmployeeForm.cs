@@ -19,14 +19,16 @@ namespace JobRecrtuitmentCompany
             textBox2.ReadOnly = true;
             textBox3.ReadOnly = true;
 
+            Employee employee = (Employee)UserManipulation.GetUser(UserManipulation.CurrentUser);
+
             label1.Text = "Пользователь:";
             textBox1.Text = UserManipulation.CurrentUser;
 
             label2.Text = "ФИО:";
-            textBox2.Text = UserManipulation.GetUsersData("Name");
+            textBox2.Text = employee.Name;
 
             label3.Text = "Портфолио:";
-            textBox3.Text = UserManipulation.GetUsersData("Portfolio");
+            textBox3.Text = employee.Portfolio;
         }
 
         private void button1_Click(object sender, EventArgs e)

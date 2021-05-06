@@ -22,54 +22,36 @@ namespace JobRecrtuitmentCompany
             label4.Text = "Требования:";
             label5.Text = "Отклики:";
 
-            using (SampleDbContext context = new SampleDbContext())
-            {
-                var vacancyInfo = context.Vacancies
-                           .Include(x => x.EmployeesResponses)
-                           .Where(x => x.VacancyId == VacancyFinder.currentVacancy)
-                           .FirstOrDefault();
 
-                textBox1.Text = vacancyInfo.Name;
-                textBox2.Text = vacancyInfo.Salary.ToString();
-                textBox3.Text = vacancyInfo.Type;
-                textBox4.Text = vacancyInfo.Requirements;
+            var vacancyInfo = VacancyFinder.GetVacancy(VacancyFinder.currentVacancy);
+
+            textBox1.Text = vacancyInfo.Name;
+            textBox2.Text = vacancyInfo.Salary.ToString();
+            textBox3.Text = vacancyInfo.Type;
+            textBox4.Text = vacancyInfo.Requirements;
          
-                var responses = vacancyInfo.EmployeesResponses.ToList();
+            var responses = vacancyInfo.EmployeesResponses.ToList();
 
-                var filteredResponses = from p in responses
-                                        select new
-                                        {
-                                            Email = p.Email,
-                                            ФИО = p.Name
-                                        };
+            var filteredResponses = from p in responses
+                                    select new
+                                    {
+                                        Email = p.Email,
+                                        ФИО = p.Name
+                                    };
 
-                dataGridView1.DataSource = filteredResponses.ToList();
-            }
+            dataGridView1.DataSource = filteredResponses.ToList();
+            
     }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SampleDbContext context = new SampleDbContext())
-            {
-                var vacancy = context.Vacancies.Find(VacancyFinder.currentVacancy);
-                vacancy.Name = textBox1.Text;
-                vacancy.Salary = int.Parse(textBox2.Text);
-                vacancy.Type = textBox3.Text;
-                vacancy.Requirements = textBox4.Text;
-                context.Entry(vacancy).State = System.Data.Entity.EntityState.Modified;
-                context.SaveChanges();
-            }
+            VacancyFinder.ChangeVacancy(VacancyFinder.currentVacancy, textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
             Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (SampleDbContext context = new SampleDbContext())
-            {
-                var vacancy = context.Vacancies.Find(VacancyFinder.currentVacancy);
-                context.Vacancies.Remove(vacancy);
-                context.SaveChanges();
-            }
+            VacancyFinder.RemoveVacancy(VacancyFinder.currentVacancy);
             Close();
         }
 

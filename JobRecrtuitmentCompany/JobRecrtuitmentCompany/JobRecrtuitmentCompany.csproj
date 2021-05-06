@@ -8,6 +8,16 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="EntityFrameworkCore.Diagrams" Version="0.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="CodeTemplates\EFModelFromDatabase\Context.cs.t4">
+      <Generator></Generator>
+    </None>
+    <None Update="CodeTemplates\EFModelFromDatabase\EntityType.cs.t4">
+      <Generator></Generator>
+    </None>
   </ItemGroup>
 
 </Project>

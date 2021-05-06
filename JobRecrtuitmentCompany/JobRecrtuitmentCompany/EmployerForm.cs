@@ -61,32 +61,33 @@ namespace JobRecrtuitmentCompany
             textBox2.ReadOnly = true;
             textBox3.ReadOnly = true;
 
+            Employer employer = (Employer)UserManipulation.GetUser(UserManipulation.CurrentUser);
+
             label1.Text = "Пользователь:";
             textBox1.Text = UserManipulation.CurrentUser;
 
             label2.Text = "Компания:";
-            textBox2.Text = UserManipulation.GetUsersData("Company");
+            textBox2.Text = employer.Company;
 
             label3.Text = "Реквизиты:";
-            textBox3.Text = UserManipulation.GetUsersData("Requisites");
+            textBox3.Text = employer.Requisites;
 
             label5.Text = "Вакансии:";
 
-            using (SampleDbContext context = new SampleDbContext())
-            {
-                var employerId = context.Users.Where(p => p.Email == UserManipulation.CurrentUser).Select(p => p.UserId).FirstOrDefault();
+            var vacancies = VacancyFinder.GetVacancies();
 
-                var vacancies = from p in context.Vacancies
-                                where p.UserId == employerId
-                                select new
-                                {
-                                    Номер_вакансии = p.VacancyId,
-                                    Название = p.Name,
-                                    Тип_работ = p.Type,
-                                    Зарплата = p.Salary
-                                };
-                dataGridView1.DataSource = vacancies.ToList();
-            }
+            var filteredVacancies = from p in vacancies
+                                    where p.UserId == employer.UserId
+                                    select new
+                                    {
+                                        Номер_вакансии = p.VacancyId,
+                                        Название = p.Name,
+                                        Тип_работ = p.Type,
+                                        Зарплата = p.Salary
+                                    };
+
+
+            dataGridView1.DataSource = filteredVacancies.ToList();
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

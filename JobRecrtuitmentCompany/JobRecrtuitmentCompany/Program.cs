@@ -72,9 +72,11 @@ namespace JobRecrtuitmentCompany
             var existingEmail = context.Users.Count(a => a.Email == email);
             if (existingEmail == 0)
             {
-                Employer employer = new Employer();
-                employer.Email = email;
-                employer.Password = password;
+                Employer employer = new Employer
+                {
+                    Email = email,
+                    Password = password
+                };
                 context.Users.Add(employer);
                 context.SaveChanges();
                 return 1;
@@ -88,9 +90,11 @@ namespace JobRecrtuitmentCompany
             var existingEmail = context.Users.Count(a => a.Email == email);
             if (existingEmail == 0)
             {
-                Employee employee = new Employee();
-                employee.Email = email;
-                employee.Password = password;
+                Employee employee = new Employee
+                {
+                    Email = email,
+                    Password = password
+                };
                 context.Users.Add(employee);
                 context.SaveChanges();
                 return 1;
@@ -98,11 +102,12 @@ namespace JobRecrtuitmentCompany
 
             return 0;
         }
-        public static string GetUsersData(string data)
+        public static User GetUser(string Email)
         {
             SampleDbContext context = new SampleDbContext();
-            var employerInfo = context.Database.SqlQuery<string>("SELECT " + data + " FROM dbo.Users WHERE Email = '" + CurrentUser + "'").FirstOrDefault();
-            return employerInfo;
+            var user = context.Users.Where(p => p.Email == Email).FirstOrDefault();
+            //var employerInfo = context.Database.SqlQuery<string>("SELECT " + data + " FROM dbo.Users WHERE Email = '" + CurrentUser + "'").FirstOrDefault();
+            return user;
         }
         public static int ChangeUsersData(string data, string column)
         {
@@ -115,6 +120,64 @@ namespace JobRecrtuitmentCompany
     {
         public static int currentVacancy;
         public static string currentEmployee;
+
+        public static int AddResponse(Vacancy vacancy, Employee employee)
+        {
+            SampleDbContext context = new SampleDbContext();
+            vacancy.EmployeesResponses.Add(employee);
+            context.SaveChanges();
+            return 1;
+        }
+
+        public static int AddVacancy(Vacancy vacancy)
+        {
+            SampleDbContext context = new SampleDbContext();
+            context.Vacancies.Add(vacancy);
+            context.SaveChanges();
+            return 1;
+        }
+
+        public static int ChangeVacancy(int vacancyId, string name, string salary, string type, string requirements)
+        {
+            SampleDbContext context = new SampleDbContext();
+            var vacancy = context.Vacancies.Find(vacancyId);
+            vacancy.Name = name;
+            vacancy.Salary = int.Parse(salary);
+            vacancy.Type = type;
+            vacancy.Requirements = requirements;
+            context.Entry(vacancy).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
+            return 1;
+        }
+        public static int RemoveVacancy(int vacancyId)
+        {
+            SampleDbContext context = new SampleDbContext();
+            var vacancy = context.Vacancies.Find(vacancyId);
+            context.Vacancies.Remove(vacancy);
+            context.SaveChanges();
+            return 1;
+        }
+        public static Vacancy GetVacancy(int VacancyId)
+        {
+            SampleDbContext context = new SampleDbContext();
+
+            var vacancy = context.Vacancies
+                           .Include(x => x.EmployeesResponses)
+                           .Where(x => x.VacancyId == VacancyId)
+                           .FirstOrDefault();
+
+            return vacancy;
+        }
+        public static IQueryable<Vacancy> GetVacancies()
+        {
+            SampleDbContext context = new SampleDbContext();
+          
+            var employerId = context.Users.Where(p => p.Email == UserManipulation.CurrentUser).Select(p => p.UserId).FirstOrDefault();
+
+            var vacancies = context.Vacancies.Where(p => p.UserId == employerId);
+
+            return vacancies; 
+        }
         public static IQueryable<Vacancy> FindVacancy(string Job, string Type, string Salary)
         {
             int salary;
