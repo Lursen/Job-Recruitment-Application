@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobRecrtuitmentCompany", "JobRecrtuitmentCompany\JobRecrtuitmentCompany.csproj", "{D5F2C2A3-195D-4187-B4DA-B53C0E2EEDBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobRecrtuitmentCompany", "JobRecrtuitmentCompany\JobRecrtuitmentCompany.csproj", "{D5F2C2A3-195D-4187-B4DA-B53C0E2EEDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobRecrtuitmentCompanyTests", "JobRecrtuitmentCompanyTests\JobRecrtuitmentCompanyTests.csproj", "{646C5A15-C1E6-4129-97B9-846B774B8FAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D5F2C2A3-195D-4187-B4DA-B53C0E2EEDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5F2C2A3-195D-4187-B4DA-B53C0E2EEDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5F2C2A3-195D-4187-B4DA-B53C0E2EEDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{646C5A15-C1E6-4129-97B9-846B774B8FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{646C5A15-C1E6-4129-97B9-846B774B8FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{646C5A15-C1E6-4129-97B9-846B774B8FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{646C5A15-C1E6-4129-97B9-846B774B8FAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -264,8 +264,8 @@ namespace JobRecrtuitmentCompany
     public class SampleDbContext : DbContext
     {
         public SampleDbContext() : base("JRC") { }
-        public DbSet<User> Users { get; set; } // Таблица Users
-        public DbSet<Vacancy> Vacancies { get; set; } // Таблица Vacancies
+        public virtual DbSet<User> Users { get; set; } // Таблица Users
+        public virtual DbSet<Vacancy> Vacancies { get; set; } // Таблица Vacancies
     }
 
     static class Program
