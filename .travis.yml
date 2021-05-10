@@ -6,4 +6,4 @@ install:
 - dotnet restore
 script:
 - dotnet build
-- dotnet test Core.Shogi.Tests/JobRecrtuitmentCompanyTests/JobRecrtuitmentCompanyTests.csproj
+- dotnet test JobRecrtuitmentCompany/JobRecrtuitmentCompanyTests/JobRecrtuitmentCompanyTests.csproj
