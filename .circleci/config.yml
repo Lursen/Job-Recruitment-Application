@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            dotnet test --no-build JobRecrtuitmentCompany/JobRecrtuitmentCompanyTests
+            dotnet test JobRecrtuitmentCompany/JobRecrtuitmentCompanyTests
             
 
 workflows:
