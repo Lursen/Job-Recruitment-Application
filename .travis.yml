@@ -1,6 +1,6 @@
 language: csharp
-dotnet: 2.1.502
 mono: none
+os: windows
 
 script:
-  - dotnet restore JobRecrtuitmentCompany/JobRecrtuitmentCompany.sln
+- dotnet test JobRecrtuitmentCompany/JobRecrtuitmentCompanyTests/JobRecrtuitmentCompanyTests.csproj
