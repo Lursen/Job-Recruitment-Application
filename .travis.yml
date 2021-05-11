@@ -1,6 +1,0 @@
-language: csharp
-mono: none
-os: windows
-
-script:
-- dotnet test JobRecrtuitmentCompany/JobRecrtuitmentCompanyTests/JobRecrtuitmentCompanyTests.csproj
