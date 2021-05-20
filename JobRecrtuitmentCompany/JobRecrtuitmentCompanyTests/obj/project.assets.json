@@ -29,6 +29,19 @@
           "build/netstandard1.0/coverlet.collector.targets": {}
         }
       },
+      "Effort.EF6/2.2.13": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework": "6.3.0",
+          "NMemory": "3.1.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/Effort.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Effort.dll": {}
+        }
+      },
       "EntityFramework/6.4.4": {
         "type": "package",
         "dependencies": {
@@ -808,6 +821,18 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NMemory/3.1.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/NMemory.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NMemory.dll": {}
         }
       },
       "NSubstitute/4.2.2": {
@@ -1844,7 +1869,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.Lightweight.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {}
@@ -2715,6 +2740,24 @@
         "coverlet-icon.png",
         "coverlet.collector.1.3.0.nupkg.sha512",
         "coverlet.collector.nuspec"
+      ]
+    },
+    "Effort.EF6/2.2.13": {
+      "sha512": "47XDI5eXHLcNibRBst5QwCZYxrMGtkBgnktypyynqgiQFfCma1VVMfOKV1aPmwg+bZymi9dHmKZa+eNcHNwRGA==",
+      "type": "package",
+      "path": "effort.ef6/2.2.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "effort.ef6.2.2.13.nupkg.sha512",
+        "effort.ef6.nuspec",
+        "lib/net40/Effort.dll",
+        "lib/net40/Effort.xml",
+        "lib/net45/Effort.dll",
+        "lib/net45/Effort.xml",
+        "lib/netstandard2.1/Effort.deps.json",
+        "lib/netstandard2.1/Effort.dll",
+        "lib/netstandard2.1/Effort.xml"
       ]
     },
     "EntityFramework/6.4.4": {
@@ -3653,6 +3696,24 @@
         "newtonsoft.json.10.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "NMemory/3.1.2": {
+      "sha512": "XK1LaQORq1e88cymAblDF4S82MRMI7layjzL+sGj2RxiyEUsgkPX3CTt8ssOQN/lie69384TV/eHtC05ADA9Zw==",
+      "type": "package",
+      "path": "nmemory/3.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/NMemory.dll",
+        "lib/net40/NMemory.xml",
+        "lib/net45/NMemory.dll",
+        "lib/net45/NMemory.xml",
+        "lib/netstandard2.0/NMemory.deps.json",
+        "lib/netstandard2.0/NMemory.dll",
+        "lib/netstandard2.0/NMemory.xml",
+        "nmemory.3.1.2.nupkg.sha512",
+        "nmemory.nuspec"
       ]
     },
     "NSubstitute/4.2.2": {
@@ -8414,6 +8475,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Effort.EF6 >= 2.2.13",
       "JobRecrtuitmentCompany >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.7.1",
       "Moq >= 4.16.1",
@@ -8473,6 +8535,10 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "Effort.EF6": {
+            "target": "Package",
+            "version": "[2.2.13, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[16.7.1, )"

@@ -137,3 +137,5 @@ C:\Users\Subconscious\Documents\GitHub\Job-Recruitment-Application\JobRecrtuitme
 C:\Users\Subconscious\Documents\GitHub\Job-Recruitment-Application\JobRecrtuitmentCompany\JobRecrtuitmentCompanyTests\obj\Release\netcoreapp3.1\JobRecrtuitmentCompanyTests.dll
 C:\Users\Subconscious\Documents\GitHub\Job-Recruitment-Application\JobRecrtuitmentCompany\JobRecrtuitmentCompanyTests\obj\Release\netcoreapp3.1\JobRecrtuitmentCompanyTests.pdb
 C:\Users\Subconscious\Documents\GitHub\Job-Recruitment-Application\JobRecrtuitmentCompany\JobRecrtuitmentCompanyTests\obj\Release\netcoreapp3.1\JobRecrtuitmentCompanyTests.genruntimeconfig.cache
+C:\Users\Subconscious\Documents\GitHub\Job-Recruitment-Application\JobRecrtuitmentCompany\JobRecrtuitmentCompanyTests\bin\Release\netcoreapp3.1\Effort.dll
+C:\Users\Subconscious\Documents\GitHub\Job-Recruitment-Application\JobRecrtuitmentCompany\JobRecrtuitmentCompanyTests\bin\Release\netcoreapp3.1\NMemory.dll

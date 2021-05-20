@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Common;
 
 namespace JobRecrtuitmentCompany
 {
@@ -264,6 +265,7 @@ namespace JobRecrtuitmentCompany
     public class SampleDbContext : DbContext
     {
         public SampleDbContext() : base("JRC") { }
+        public SampleDbContext(DbConnection connection) : base(connection, false) { }
         public virtual DbSet<User> Users { get; set; } // Таблица Users
         public virtual DbSet<Vacancy> Vacancies { get; set; } // Таблица Vacancies
     }

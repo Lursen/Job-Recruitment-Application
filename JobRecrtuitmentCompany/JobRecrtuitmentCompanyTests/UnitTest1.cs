@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Xunit;
-
-
+using Effort;
 
 namespace JobRecrtuitmentCompanyTests
 {
@@ -59,36 +58,98 @@ namespace JobRecrtuitmentCompanyTests
         }
     }
 
-    public class LoginTest
+    public class JobCompanyTests
     {
+       
         [Fact]
-        public void Test1()
+        public void VacancyCreationTest()
         {
-            var data = new List<User>
+            var connection = Effort.DbConnectionFactory.CreateTransient();
+
+            using (var context = new SampleDbContext(connection))
             {
-                new Employer { Email = "1@mail.ru", Password = "123456" , Company = "ALMA"},
-                new Employee { Email = "2@mail.ru", Password = "qwerty", Name = "John Smith" }
-            }.AsQueryable();
+                 var list = new List<User>
+                 { 
+                    new Employer { Email = "1@mail.ru", Password = "123456" , Company = "ALMA"},
+                    new Employer { Email = "2@mail.ru", Password = "qwerty", Company = "LAMA" }
+                 }.AsQueryable();
 
+                context.Users.AddRange(list);
+                context.SaveChanges();
+            }
 
-            var mockSet = new Mock<System.Data.Entity.DbSet<User>>();
-            mockSet.As<IQueryable<User>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<User>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            using (var context = new SampleDbContext(connection))
+            {
+                var user = context.Users.Where(x => x.Email == "1@mail.ru").FirstOrDefault();
 
-            var mockContext = new Mock<SampleDbContext>();
-            mockContext.Setup(c => c.Users).Returns(mockSet.Object);
+                var list = new List<Vacancy>
+                {   new Vacancy { Employer = (Employer)user, Name = "First Job", Salary = 35000, Type = "Simple Job", Requirements = "Straightforward" },
+                    new Vacancy { Employer = (Employer)user, Name = "Second Job", Salary = 45000, Type = "Difficult Job", Requirements = "Straightforward" }
+                }.AsQueryable();
 
-            var service = new UserService(mockContext.Object);
-            var users = service.GetAllUsers();
+                context.Vacancies.AddRange(list);
+                context.SaveChanges();
+            }
 
-            Assert.Equal(2, users.Count);
-            Assert.Equal("1@mail.ru", users[0].Email);
-            Assert.Equal("2@mail.ru", users[1].Email);
+            using (var context = new SampleDbContext(connection))
+            {
+                var vacancies = context.Vacancies.ToList();
+                Assert.Equal("First Job", vacancies.ElementAt(0).Name);
+                Assert.Equal("Second Job", vacancies.ElementAt(1).Name);
+            }
+        }
 
-            Assert.Equal(1, service.LogIn("1@mail.ru", "123456"));
-            Assert.Equal(2, service.LogIn("2@mail.ru", "qwerty"));
+        [Fact]
+        public void VacancyResponseTest()
+        {
+            var connection = Effort.DbConnectionFactory.CreateTransient();
+
+            using (var context = new SampleDbContext(connection))
+            {
+                var list = new List<User>
+                 {
+                    new Employee { Email = "1@mail.ru", Password = "123456" , Name = "John Smith", Portfolio = "Just Ordinary Guy"},
+                    new Employer { Email = "2@mail.ru", Password = "qwerty", Company = "LAMA" }
+                 }.AsQueryable();
+
+                context.Users.AddRange(list);
+                context.SaveChanges();
+            }
+
+            using (var context = new SampleDbContext(connection))
+            {
+                var user = context.Users.Where(x => x.Email == "2@mail.ru").FirstOrDefault();
+
+                var list = new List<Vacancy>
+                {   new Vacancy { Employer = (Employer)user, Name = "First Job", Salary = 35000, Type = "Simple Job", Requirements = "Straightforward" },
+                    new Vacancy { Employer = (Employer)user, Name = "Second Job", Salary = 45000, Type = "Difficult Job", Requirements = "Straightforward" }
+                }.AsQueryable();
+
+                context.Vacancies.AddRange(list);
+                context.SaveChanges();
+            }
+
+            using (var context = new SampleDbContext(connection))
+            {
+                var vacancy = context.Vacancies.Where(x => x.Name == "First Job").FirstOrDefault();
+
+                var user = context.Users.Where(x => x.Email == "1@mail.ru").FirstOrDefault();
+
+                vacancy.EmployeesResponses.Add((Employee)user);
+                context.SaveChanges();
+            }
+
+            using (var context = new SampleDbContext(connection))
+            {
+                var vacancy = context.Vacancies
+               .Include(x => x.EmployeesResponses)
+               .Where(x => x.Name == "First Job")
+               .FirstOrDefault();
+
+                var responses = vacancy.EmployeesResponses.ToList();
+
+                Assert.Equal("1@mail.ru", responses.ElementAt(0).Email);
+            }
         }
     }
 }

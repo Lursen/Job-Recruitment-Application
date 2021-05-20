@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "XWpstg1HZKTvjVTVnkiZ7NwggZ6AagjGJsYcANeCTzyrSKKAprgfiIon0xq2q1uz+BiEsEKUM8wzvDQjyIkjhA==",
+  "dgSpecHash": "I8EPlrnHrm8b6zv7mv9BhZqRFJz6BjdI+ruUFEE6TyKCnV3TPgxttLxPZfUrNgFe7TlOc42U/GzZttJHjGI1cQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Subconscious\\Documents\\GitHub\\Job-Recruitment-Application\\JobRecrtuitmentCompany\\JobRecrtuitmentCompanyTests\\JobRecrtuitmentCompanyTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Subconscious\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\Subconscious\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",
+    "C:\\Users\\Subconscious\\.nuget\\packages\\effort.ef6\\2.2.13\\effort.ef6.2.2.13.nupkg.sha512",
     "C:\\Users\\Subconscious\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Subconscious\\.nuget\\packages\\entityframeworkcore.diagrams\\0.4.2\\entityframeworkcore.diagrams.0.4.2.nupkg.sha512",
     "C:\\Users\\Subconscious\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\1.1.1\\microsoft.aspnetcore.hosting.abstractions.1.1.1.nupkg.sha512",
@@ -42,6 +43,7 @@
     "C:\\Users\\Subconscious\\.nuget\\packages\\moq\\4.16.1\\moq.4.16.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Subconscious\\.nuget\\packages\\newtonsoft.json\\10.0.3\\newtonsoft.json.10.0.3.nupkg.sha512",
+    "C:\\Users\\Subconscious\\.nuget\\packages\\nmemory\\3.1.2\\nmemory.3.1.2.nupkg.sha512",
     "C:\\Users\\Subconscious\\.nuget\\packages\\nsubstitute\\4.2.2\\nsubstitute.4.2.2.nupkg.sha512",
     "C:\\Users\\Subconscious\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
     "C:\\Users\\Subconscious\\.nuget\\packages\\remotion.linq\\2.1.1\\remotion.linq.2.1.1.nupkg.sha512",
