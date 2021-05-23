@@ -122,17 +122,38 @@ namespace JobRecrtuitmentCompany
         public static int currentVacancy;
         public static string currentEmployee;
 
-        public static int AddResponse(Vacancy vacancy, Employee employee)
+        public static int AddResponse(int VacancyId, string UserEmail)
         {
             SampleDbContext context = new SampleDbContext();
-            vacancy.EmployeesResponses.Add(employee);
-            context.SaveChanges();
-            return 1;
+
+            var curVacancy = context.Vacancies
+                           .Include(x => x.EmployeesResponses)
+                           .Where(x => x.VacancyId == VacancyId)
+                           .FirstOrDefault();
+
+            var responses = curVacancy.EmployeesResponses.ToList();
+
+            Employee curUser = (Employee)context.Users.Where(p => p.Email == UserEmail).FirstOrDefault();
+
+            bool responseExists = responses.Contains(curUser);
+
+            if (responseExists)
+            {
+                return 0;
+            }
+            else
+            {
+                curVacancy.EmployeesResponses.Add(curUser);
+                context.SaveChanges();
+                return 1;
+            }
+
         }
 
         public static int AddVacancy(Vacancy vacancy)
         {
             SampleDbContext context = new SampleDbContext();
+            context.Users.Attach(vacancy.Employer);
             context.Vacancies.Add(vacancy);
             context.SaveChanges();
             return 1;

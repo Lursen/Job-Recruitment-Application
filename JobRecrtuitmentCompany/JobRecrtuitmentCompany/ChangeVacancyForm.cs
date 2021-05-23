@@ -40,25 +40,78 @@ namespace JobRecrtuitmentCompany
                                     };
 
             dataGridView1.DataSource = filteredResponses.ToList();
-            
-    }
+
+            // Create a Menu Item  
+            MenuStrip MainMenu = new MenuStrip();
+            MainMenu.Text = "File Menu";
+            MainMenuStrip = MainMenu;
+            Controls.Add(MainMenu);
+
+            ToolStripMenuItem PersonalCabinet = new ToolStripMenuItem("User");
+            PersonalCabinet.Text = "Личный кабинет";
+
+            ToolStripMenuItem Vacancies = new ToolStripMenuItem("Vacancy");
+            Vacancies.Text = "Найти вакансию";
+
+            ToolStripMenuItem Logout = new ToolStripMenuItem("Logout");
+            Logout.Text = "Выйти";
+
+            MainMenu.Items.Add(PersonalCabinet);
+            MainMenu.Items.Add(Vacancies);
+            MainMenu.Items.Add(Logout);
+
+            PersonalCabinet.Click += new EventHandler(this.PersonalCabinetItemClick);
+            Vacancies.Click += new EventHandler(this.VacanciesItemClick);
+            Logout.Click += new EventHandler(this.LogoutItemClick);
+        }
+
+        private void PersonalCabinetItemClick(object sender, EventArgs e)
+        {
+            this.Hide();
+            EmployerForm mainForm = new EmployerForm();
+            mainForm.Closed += (s, args) => this.Close();
+            mainForm.Show();
+        }
+
+        private void VacanciesItemClick(object sender, EventArgs e)
+        {
+            this.Hide();
+            CreateVacancy createVacancy = new CreateVacancy();
+            createVacancy.Closed += (s, args) => this.Close();
+            createVacancy.Show();
+        }
+
+        private void LogoutItemClick(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 Form1 = new Form1();
+            Form1.Closed += (s, args) => this.Close();
+            Form1.Show();
+        }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             VacancyFinder.ChangeVacancy(VacancyFinder.currentVacancy, textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
-            Close();
+            MessageBox.Show("Данные сохранены");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             VacancyFinder.RemoveVacancy(VacancyFinder.currentVacancy);
-            Close();
+            MessageBox.Show("Вакансия удалена");
+            this.Hide();
+            EmployerForm mainForm = new EmployerForm();
+            mainForm.Closed += (s, args) => this.Close();
+            mainForm.Show();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dataGridView1.CurrentRow;
-            if (!row.IsNewRow)
+            if (row == null) { }
+            else
             {
                 VacancyFinder.currentEmployee = (string)row.Cells["Email"].Value;
                 WatchEmployeeProfile watchEmployeeProfile = new WatchEmployeeProfile();

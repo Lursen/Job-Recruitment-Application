@@ -17,7 +17,50 @@ namespace JobRecrtuitmentCompany
         public EmployerForm()
         {
             InitializeComponent();
+
+            // Create a Menu Item  
+            MenuStrip MainMenu = new MenuStrip();
+            MainMenu.Text = "File Menu";
+            MainMenuStrip = MainMenu;
+            Controls.Add(MainMenu);
+
+            ToolStripMenuItem PersonalCabinet = new ToolStripMenuItem("User");
+            PersonalCabinet.Text = "Личный кабинет";
+
+            ToolStripMenuItem Vacancies = new ToolStripMenuItem("Vacancy");
+            Vacancies.Text = "Найти вакансию";
+
+            ToolStripMenuItem Logout = new ToolStripMenuItem("Logout");
+            Logout.Text = "Выйти";
+
+            MainMenu.Items.Add(PersonalCabinet);
+            MainMenu.Items.Add(Vacancies);
+            MainMenu.Items.Add(Logout);
+
+            PersonalCabinet.Click += new EventHandler(this.PersonalCabinetItemClick);
+            Vacancies.Click += new EventHandler(this.VacanciesItemClick);
+            Logout.Click += new EventHandler(this.LogoutItemClick);
         }
+
+        private void PersonalCabinetItemClick(object sender, EventArgs e)
+        {
+
+        }
+        private void VacanciesItemClick(object sender, EventArgs e)
+        {
+            this.Hide();
+            CreateVacancy createVacancy = new CreateVacancy();
+            createVacancy.Closed += (s, args) => this.Close();
+            createVacancy.Show();
+        }
+        private void LogoutItemClick(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 Form1 = new Form1();
+            Form1.Closed += (s, args) => this.Close();
+            Form1.Show();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (changeCount == false)
@@ -42,12 +85,6 @@ namespace JobRecrtuitmentCompany
 
                 changeCount = false;
             }
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            CreateVacancy createVacancy = new CreateVacancy();
-            createVacancy.ShowDialog();
-            UpdatePage();
         }
 
         private void EmployerForm_Load(object sender, EventArgs e)
@@ -92,12 +129,15 @@ namespace JobRecrtuitmentCompany
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dataGridView1.CurrentRow;
-            if (!row.IsNewRow)
+            if (row == null){ }
+            else
             {
+                this.Hide();
                 VacancyFinder.currentVacancy= (int)row.Cells["Номер_вакансии"].Value;
                 ChangeVacancyForm changeVacancyForm = new ChangeVacancyForm();
-                changeVacancyForm.ShowDialog();
-                UpdatePage();
+                changeVacancyForm.Closed += (s, args) => this.Close();
+                changeVacancyForm.Show();
+               // UpdatePage();
             }
         }
     }

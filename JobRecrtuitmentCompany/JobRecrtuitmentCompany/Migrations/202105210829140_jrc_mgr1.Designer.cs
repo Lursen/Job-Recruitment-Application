@@ -7,13 +7,13 @@ namespace JobRecrtuitmentCompany.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class jrcMigration : IMigrationMetadata
+    public sealed partial class jrc_mgr1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(jrcMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(jrc_mgr1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202104060615105_jrcMigration"; }
+            get { return "202105210829140_jrc_mgr1"; }
         }
         
         string IMigrationMetadata.Source

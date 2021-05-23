@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class jrcMigration : DbMigration
+    public partial class jrc_mgr1 : DbMigration
     {
         public override void Up()
         {
