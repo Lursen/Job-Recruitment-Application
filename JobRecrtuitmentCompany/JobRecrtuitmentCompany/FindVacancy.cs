@@ -15,9 +15,52 @@ namespace JobRecrtuitmentCompany
         {
             InitializeComponent();
 
+            this.Text = "Поиск вакансий";
+
             label1.Text = "Профессия:";
             label2.Text = "Профессиональная область:";
             label3.Text = "Минимальная заработная плата:";
+            // Create a Menu Item  
+            MenuStrip MainMenu = new MenuStrip();
+            MainMenu.Text = "File Menu";
+            MainMenuStrip = MainMenu;
+            Controls.Add(MainMenu);
+
+            ToolStripMenuItem PersonalCabinet = new ToolStripMenuItem("User");
+            PersonalCabinet.Text = "Личный кабинет";
+
+            ToolStripMenuItem Vacancies = new ToolStripMenuItem("Vacancy");
+            Vacancies.Text = "Поиск вакансий";
+
+            ToolStripMenuItem Logout = new ToolStripMenuItem("Logout");
+            Logout.Text = "Выйти";
+
+            MainMenu.Items.Add(PersonalCabinet);
+            MainMenu.Items.Add(Vacancies);
+            MainMenu.Items.Add(Logout);
+
+            PersonalCabinet.Click += new EventHandler(this.PersonalCabinetItemClick);
+            Vacancies.Click += new EventHandler(this.VacanciesItemClick);
+            Logout.Click += new EventHandler(this.LogoutItemClick);
+        }
+
+        private void PersonalCabinetItemClick(object sender, EventArgs e)
+        {
+            this.Hide();
+            EmployeeForm mainForm = new EmployeeForm();
+            mainForm.Closed += (s, args) => this.Close();
+            mainForm.Show();
+        }
+        private void VacanciesItemClick(object sender, EventArgs e)
+        {
+
+        }
+        private void LogoutItemClick(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 Form1 = new Form1();
+            Form1.Closed += (s, args) => this.Close();
+            Form1.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)

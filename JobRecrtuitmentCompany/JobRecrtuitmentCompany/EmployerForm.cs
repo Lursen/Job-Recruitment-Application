@@ -18,6 +18,8 @@ namespace JobRecrtuitmentCompany
         {
             InitializeComponent();
 
+            this.Text = "Личный кабинет";
+
             // Create a Menu Item  
             MenuStrip MainMenu = new MenuStrip();
             MainMenu.Text = "File Menu";
@@ -28,7 +30,7 @@ namespace JobRecrtuitmentCompany
             PersonalCabinet.Text = "Личный кабинет";
 
             ToolStripMenuItem Vacancies = new ToolStripMenuItem("Vacancy");
-            Vacancies.Text = "Найти вакансию";
+            Vacancies.Text = "Создать вакансию";
 
             ToolStripMenuItem Logout = new ToolStripMenuItem("Logout");
             Logout.Text = "Выйти";
@@ -63,6 +65,9 @@ namespace JobRecrtuitmentCompany
 
         private void button1_Click(object sender, EventArgs e)
         {
+            User user = UserManipulation.GetUser(UserManipulation.CurrentUser);
+            User ptnUser = UserManipulation.GetUser(textBox1.Text);
+
             if (changeCount == false)
             {
                 textBox1.ReadOnly = false;
@@ -73,17 +78,26 @@ namespace JobRecrtuitmentCompany
             }
             else
             {
-                UserManipulation.ChangeUsersData(textBox1.Text,"Email");
-                UserManipulation.ChangeUsersData(textBox2.Text, "Company");
-                UserManipulation.ChangeUsersData(textBox3.Text, "Requisites");
+                if (ptnUser == null || user.Email == ptnUser.Email)
+                {
+                    UserManipulation.ChangeUsersData(textBox1.Text, "Email");
+                    UserManipulation.ChangeUsersData(textBox2.Text, "Company");
+                    UserManipulation.ChangeUsersData(textBox3.Text, "Requisites");
 
-                UserManipulation.CurrentUser = textBox1.Text;
+                    UserManipulation.CurrentUser = textBox1.Text;
 
-                textBox1.ReadOnly = true;
-                textBox2.ReadOnly = true;
-                textBox3.ReadOnly = true;
+                    textBox1.ReadOnly = true;
+                    textBox2.ReadOnly = true;
+                    textBox3.ReadOnly = true;
 
-                changeCount = false;
+                    changeCount = false;
+                }
+                else
+                {
+                    MessageBox.Show("Аккаунт с таким Email уже существует!");
+
+                    textBox1.Text = UserManipulation.CurrentUser;
+                }
             }
         }
 

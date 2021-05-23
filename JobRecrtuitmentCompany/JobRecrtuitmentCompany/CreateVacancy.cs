@@ -14,6 +14,8 @@ namespace JobRecrtuitmentCompany
         public CreateVacancy()
         {
             InitializeComponent();
+            
+            this.Text = "Создание вакансии";
 
             label1.Text = "Название вакансии:";
             label2.Text = "Заработная плата:";
@@ -30,7 +32,7 @@ namespace JobRecrtuitmentCompany
             PersonalCabinet.Text = "Личный кабинет";
 
             ToolStripMenuItem Vacancies = new ToolStripMenuItem("Vacancy");
-            Vacancies.Text = "Найти вакансию";
+            Vacancies.Text = "Создать вакансию";
 
             ToolStripMenuItem Logout = new ToolStripMenuItem("Logout");
             Logout.Text = "Выйти";

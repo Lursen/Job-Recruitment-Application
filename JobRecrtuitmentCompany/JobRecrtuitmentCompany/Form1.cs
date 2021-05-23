@@ -16,6 +16,7 @@ namespace JobRecrtuitmentCompany
         public Form1()
         {
             InitializeComponent();
+            this.Text = "Авторизация пользователя";
         }
 
         private void button2_Click(object sender, EventArgs e)

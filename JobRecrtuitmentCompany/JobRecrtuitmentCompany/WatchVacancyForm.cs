@@ -16,6 +16,8 @@ namespace JobRecrtuitmentCompany
         {
             InitializeComponent();
 
+            this.Text = "Информация о вакансии";
+
             label1.Text = "Название вакансии:";
             label2.Text = "Заработная плата:";
             label3.Text = "Тип работ:";
@@ -27,24 +29,24 @@ namespace JobRecrtuitmentCompany
             textBox2.Text = vacancy.Salary.ToString();
             textBox3.Text = vacancy.Type;
             textBox4.Text = vacancy.Requirements;
+
+            textBox1.ReadOnly = true;
+            textBox2.ReadOnly = true;
+            textBox3.ReadOnly = true;
+            textBox4.ReadOnly = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var found = VacancyFinder.AddResponse(VacancyFinder.currentVacancy, UserManipulation.CurrentUser);
 
-            var currentVacancy = VacancyFinder.GetVacancy(VacancyFinder.currentVacancy);
-            var responses = currentVacancy.EmployeesResponses.ToList();
-            Employee curUser = (Employee)UserManipulation.GetUser(UserManipulation.CurrentUser);
-
-            bool responseExists = responses.Contains(curUser);
-
-            if (responseExists)
+            if (found == 0)
             {
                 MessageBox.Show("Отклик уже оставлен!");
             }
             else
             {
-                VacancyFinder.AddResponse(currentVacancy,curUser);
+                MessageBox.Show("Отклик оставлен!");
             }
         }
     }

@@ -43,44 +43,45 @@ namespace JobRecrtuitmentCompany
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 39);
+            this.label1.Location = new System.Drawing.Point(25, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 117);
+            this.label2.Location = new System.Drawing.Point(25, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
+            this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "label2";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 194);
+            this.label3.Location = new System.Drawing.Point(25, 146);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 20);
+            this.label3.Size = new System.Drawing.Size(38, 15);
             this.label3.TabIndex = 6;
             this.label3.Text = "label3";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(225, 39);
+            this.label4.Location = new System.Drawing.Point(197, 29);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 20);
+            this.label4.Size = new System.Drawing.Size(38, 15);
             this.label4.TabIndex = 7;
             this.label4.Text = "label4";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(29, 308);
+            this.button1.Location = new System.Drawing.Point(25, 231);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 29);
+            this.button1.Size = new System.Drawing.Size(144, 22);
             this.button1.TabIndex = 8;
             this.button1.Text = "Создать вакансию";
             this.button1.UseVisualStyleBackColor = true;
@@ -88,38 +89,42 @@ namespace JobRecrtuitmentCompany
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(29, 62);
+            this.textBox1.Location = new System.Drawing.Point(25, 46);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 27);
+            this.textBox1.Size = new System.Drawing.Size(145, 23);
             this.textBox1.TabIndex = 9;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(29, 140);
+            this.textBox2.Location = new System.Drawing.Point(25, 105);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(165, 27);
+            this.textBox2.Size = new System.Drawing.Size(145, 23);
             this.textBox2.TabIndex = 10;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(29, 217);
+            this.textBox3.Location = new System.Drawing.Point(25, 163);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(165, 27);
+            this.textBox3.Size = new System.Drawing.Size(145, 23);
             this.textBox3.TabIndex = 11;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(225, 62);
+            this.textBox4.Location = new System.Drawing.Point(197, 46);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(330, 325);
+            this.textBox4.Size = new System.Drawing.Size(439, 315);
             this.textBox4.TabIndex = 12;
             // 
             // CreateVacancy
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 399);
+            this.ClientSize = new System.Drawing.Size(665, 396);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -129,6 +134,7 @@ namespace JobRecrtuitmentCompany
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CreateVacancy";
             this.Text = "CreateVacancy";
             this.ResumeLayout(false);

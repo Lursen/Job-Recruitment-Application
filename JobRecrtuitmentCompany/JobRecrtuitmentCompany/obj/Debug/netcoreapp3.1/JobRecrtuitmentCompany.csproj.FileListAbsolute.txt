@@ -175,3 +175,4 @@ C:\Users\Subconscious\Desktop\Job-Recruitment-Application-main\Job-Recruitment-A
 C:\Users\Subconscious\Desktop\Job-Recruitment-Application-main\Job-Recruitment-Application-main\JobRecrtuitmentCompany\JobRecrtuitmentCompany\obj\Debug\netcoreapp3.1\JobRecrtuitmentCompany.dll
 C:\Users\Subconscious\Desktop\Job-Recruitment-Application-main\Job-Recruitment-Application-main\JobRecrtuitmentCompany\JobRecrtuitmentCompany\obj\Debug\netcoreapp3.1\JobRecrtuitmentCompany.pdb
 C:\Users\Subconscious\Desktop\Job-Recruitment-Application-main\Job-Recruitment-Application-main\JobRecrtuitmentCompany\JobRecrtuitmentCompany\obj\Debug\netcoreapp3.1\JobRecrtuitmentCompany.genruntimeconfig.cache
+C:\Users\Subconscious\Documents\GitHub\Job-Recruitment-Application\JobRecrtuitmentCompany\JobRecrtuitmentCompany\obj\Debug\netcoreapp3.1\JobRecrtuitmentCompany.Migrations.jrc_mgr1.resources

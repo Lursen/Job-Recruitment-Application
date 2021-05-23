@@ -13,6 +13,7 @@ namespace JobRecrtuitmentCompany
         public RegistrationForm()
         {
             InitializeComponent();
+            this.Text = "Регистрация";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -22,7 +23,9 @@ namespace JobRecrtuitmentCompany
 
             if (radioButton1.Checked && !String.IsNullOrEmpty(email) && !String.IsNullOrEmpty(password)) //работодатель
             {
-                if (UserManipulation.AddNewEmployer(email, password)==1)
+                int fnd = UserManipulation.AddNewEmployer(email, password);
+
+                if (fnd == 1)
                 {
                     MessageBox.Show("Аккаунт работодателя успешно создан", "Регистрация");
                     this.Close();
@@ -35,7 +38,9 @@ namespace JobRecrtuitmentCompany
 
             else if (radioButton2.Checked && !String.IsNullOrEmpty(email) && !String.IsNullOrEmpty(password)) //соискатель
             {
-                if (UserManipulation.AddNewEmployee(email, password) == 1)
+                int fnd = UserManipulation.AddNewEmployee(email, password);
+
+                if (fnd == 1)
                 {
                     MessageBox.Show("Аккаунт соискателя успешно создан", "Регистрация");
                     this.Close();

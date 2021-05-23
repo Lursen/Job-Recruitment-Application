@@ -16,30 +16,15 @@ namespace JobRecrtuitmentCompany
         {
             InitializeComponent();
 
+            this.Text = "Редактирование вакансии";
+
             label1.Text = "Название вакансии:";
             label2.Text = "Заработная плата:";
             label3.Text = "Тип работ:";
             label4.Text = "Требования:";
             label5.Text = "Отклики:";
 
-
-            var vacancyInfo = VacancyFinder.GetVacancy(VacancyFinder.currentVacancy);
-
-            textBox1.Text = vacancyInfo.Name;
-            textBox2.Text = vacancyInfo.Salary.ToString();
-            textBox3.Text = vacancyInfo.Type;
-            textBox4.Text = vacancyInfo.Requirements;
-         
-            var responses = vacancyInfo.EmployeesResponses.ToList();
-
-            var filteredResponses = from p in responses
-                                    select new
-                                    {
-                                        Email = p.Email,
-                                        ФИО = p.Name
-                                    };
-
-            dataGridView1.DataSource = filteredResponses.ToList();
+            UpdatePage();
 
             // Create a Menu Item  
             MenuStrip MainMenu = new MenuStrip();
@@ -51,7 +36,7 @@ namespace JobRecrtuitmentCompany
             PersonalCabinet.Text = "Личный кабинет";
 
             ToolStripMenuItem Vacancies = new ToolStripMenuItem("Vacancy");
-            Vacancies.Text = "Найти вакансию";
+            Vacancies.Text = "Создать вакансию";
 
             ToolStripMenuItem Logout = new ToolStripMenuItem("Logout");
             Logout.Text = "Выйти";
@@ -64,6 +49,28 @@ namespace JobRecrtuitmentCompany
             Vacancies.Click += new EventHandler(this.VacanciesItemClick);
             Logout.Click += new EventHandler(this.LogoutItemClick);
         }
+
+        private void UpdatePage()
+        {
+            var vacancyInfo = VacancyFinder.GetVacancy(VacancyFinder.currentVacancy);
+
+            textBox1.Text = vacancyInfo.Name;
+            textBox2.Text = vacancyInfo.Salary.ToString();
+            textBox3.Text = vacancyInfo.Type;
+            textBox4.Text = vacancyInfo.Requirements;
+
+            var responses = vacancyInfo.EmployeesResponses.ToList();
+
+            var filteredResponses = from p in responses
+                                    select new
+                                    {
+                                        Email = p.Email,
+                                        ФИО = p.Name
+                                    };
+
+            dataGridView1.DataSource = filteredResponses.ToList();
+        }
+
 
         private void PersonalCabinetItemClick(object sender, EventArgs e)
         {
@@ -117,6 +124,7 @@ namespace JobRecrtuitmentCompany
                 WatchEmployeeProfile watchEmployeeProfile = new WatchEmployeeProfile();
                 watchEmployeeProfile.ShowDialog();
             }
+            UpdatePage();
         }
     }
 }
