@@ -35,7 +35,6 @@ namespace JobRecrtuitmentCompany
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Create existing entities without fetch:
             using (SampleDbContext context = new SampleDbContext())
             {
                 var vacancy = context.Vacancies

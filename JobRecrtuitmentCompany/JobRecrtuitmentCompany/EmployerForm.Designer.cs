@@ -74,6 +74,7 @@
             this.printPreviewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +115,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(53, 252);
+            this.button1.Location = new System.Drawing.Point(27, 254);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 22);
@@ -408,11 +409,22 @@
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
             this.exitToolStripMenuItem1.Text = "E&xit";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(27, 420);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(157, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Удалить учётную запись";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // EmployerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 458);
+            this.ClientSize = new System.Drawing.Size(753, 458);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -479,5 +491,6 @@
         private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.Button button2;
     }
 }

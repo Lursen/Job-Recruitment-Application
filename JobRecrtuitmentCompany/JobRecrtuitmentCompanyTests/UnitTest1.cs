@@ -60,7 +60,31 @@ namespace JobRecrtuitmentCompanyTests
 
     public class JobCompanyTests
     {
-       
+        [Fact]
+        public void UserTest()
+        {
+            var connection = Effort.DbConnectionFactory.CreateTransient();
+
+            using (var context = new SampleDbContext(connection))
+            {
+                var list = new List<User>
+                 {
+                    new Employer { Email = "1@mail.ru", Password = "123456" , Company = "ALMA"},
+                    new Employee { Email = "2@mail.ru", Password = "qwerty", Name = "John Smith" }
+                 }.AsQueryable();
+
+                context.Users.AddRange(list);
+                context.SaveChanges();
+            }
+
+            using (var context = new SampleDbContext(connection))
+            {
+                var users = context.Users.ToList();
+                Assert.Equal("1@mail.ru", users.ElementAt(0).Email);
+                Assert.Equal("2@mail.ru", users.ElementAt(1).Email);
+            }
+        }
+
         [Fact]
         public void VacancyCreationTest()
         {

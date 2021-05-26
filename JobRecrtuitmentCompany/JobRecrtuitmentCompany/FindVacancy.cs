@@ -85,7 +85,8 @@ namespace JobRecrtuitmentCompany
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dataGridView1.CurrentRow;
-            if (!row.IsNewRow)
+            if (row == null) { }
+            else
             {
                 VacancyFinder.currentVacancy = (int)row.Cells["Номер_вакансии"].Value;
                 WatchVacancyForm watchVacancyForm = new WatchVacancyForm();

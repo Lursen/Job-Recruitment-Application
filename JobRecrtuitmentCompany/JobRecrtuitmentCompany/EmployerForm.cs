@@ -154,5 +154,19 @@ namespace JobRecrtuitmentCompany
                // UpdatePage();
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (SampleDbContext context = new SampleDbContext())
+            {
+                var employer = context.Users.Where(x=>x.Email==UserManipulation.CurrentUser).FirstOrDefault();
+                context.Users.Remove(employer);
+                context.SaveChanges();
+            }
+            this.Hide();
+            Form1 Form1 = new Form1();
+            Form1.Closed += (s, args) => this.Close();
+            Form1.Show();
+        }
     }
 }
